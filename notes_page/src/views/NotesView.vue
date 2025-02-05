@@ -1,17 +1,17 @@
-<template>
-  <main class="home"></main>
-</template>
-
 <script lang="ts">
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  name: 'HomeView',
+  name: 'NotesView',
 })
 </script>
 
+<template>
+  <main class="notes"></main>
+</template>
+
 <style lang="scss" scoped>
-.home {
+.notes {
   flex: 1;
 }
 </style>
