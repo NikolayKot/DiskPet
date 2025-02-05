@@ -294,11 +294,7 @@ export default defineComponent({
       }
 
       &:hover {
-        color: var(--green-middle);
-      }
-
-      &:active {
-        color: var(--green-dark);
+        color: var(--white);
       }
     }
   }
