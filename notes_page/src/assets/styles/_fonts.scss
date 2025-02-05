@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;900&display=swap');
+
+:root {
+  --h1: {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 104px;
+    font-weight: 900;
+    line-height: 104px;
+  }
+
+  --h2: {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 72px;
+  }
+
+  --h3: {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 48px;
+  }
+
+  --h4: {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 32px;
+  }
+
+  --text-normal: {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 32px;
+  }
+
+  --text-small: {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 28px;
+  }
+
+  --text-small-bold: {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 28px;
+  }
+}
+
+@mixin h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 104px;
+  font-weight: 900;
+  line-height: 104px;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+
+@mixin h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 72px;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+
+@mixin h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 48px;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+
+@mixin h4 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 32px;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+
+@mixin text-normal {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 32px;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+
+@mixin text-small {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 28px;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+
+@mixin text-small-bold {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 28px;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
