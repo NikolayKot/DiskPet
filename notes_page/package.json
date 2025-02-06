@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "deploy": "sh deploy.sh",
-    "build": "vite build && echo.>docs/.nojekyll",
+    "build": "vite build && touch docs/.nojekyll",
     "preview": "vite preview",
     "test:unit": "vitest",
     "build-only": "vite build",
