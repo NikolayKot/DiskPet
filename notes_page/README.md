@@ -1,44 +1,57 @@
-# notes_page
+# DiskPet Notes
 
-This template should help get you started developing with Vue 3 in Vite.
+DiskPet Notes - это веб-приложение для создания и управления заметками с возможностью авторизации. Построено на Vue 3 + TypeScript.
 
-## Recommended IDE Setup
+## Основной функционал
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+- Авторизация пользователей
+- Создание, редактирование и удаление заметок
+- Адаптивный дизайн
 
-## Type Support for `.vue` Imports in TS
+## Технологический стек
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+- Vue 3
+- TypeScript
+- Vite
+- Vue Router
+- Pinia
+- SCSS
+- ESLint
 
-## Customize configuration
+## Установка и запуск
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+### Предварительные требования
 
-## Project Setup
+- Node.js (версия 16 или выше)
+- npm (входит в состав Node.js)
+
+### Установка зависимостей
 
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+### Запуск в режиме разработки
 
 ```sh
 npm run dev
 ```
 
-### Type-Check, Compile and Minify for Production
+### Приложение будет доступно по адресу: http://localhost:5173
+
+### Сборка для production
 
 ```sh
 npm run build
 ```
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+### Проверка типов
 
 ```sh
-npm run test:unit
+npm run type-check
 ```
 
-### Lint with [ESLint](https://eslint.org/)
+### Запуск линтера
 
 ```sh
 npm run lint
