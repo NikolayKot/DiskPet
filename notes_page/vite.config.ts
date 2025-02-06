@@ -4,6 +4,10 @@ import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
 
 export default defineConfig({
+  base: '/DiskPet/',
+  build: {
+    outDir: 'docs',
+  },
   plugins: [vue(), vueDevTools()],
   resolve: {
     alias: {
