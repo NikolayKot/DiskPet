@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "deploy": "sh deploy.sh",
-    "build": "vite build && touch docs/.nojekyll",
+    "build": "vite build && node -e \"const fs = require('fs'); const dir = 'docs'; if (!fs.existsSync(dir)){ fs.mkdirSync(dir); } fs.writeFileSync('docs/.nojekyll', '');\"",
     "preview": "vite preview",
     "test:unit": "vitest",
     "build-only": "vite build",
@@ -30,6 +30,7 @@
     "@vue/eslint-config-typescript": "^14.3.0",
     "@vue/test-utils": "^2.4.6",
     "@vue/tsconfig": "^0.7.0",
+    "cross-env": "^7.0.3",
     "eslint": "^9.18.0",
     "eslint-plugin-vue": "^9.32.0",
     "jiti": "^2.4.2",
