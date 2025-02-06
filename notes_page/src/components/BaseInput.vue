@@ -50,8 +50,8 @@ export default defineComponent({
     const characterCount = computed(() => props.modelValue.length)
 
     const maxLength = computed(() => {
-      if (props.type === 'name') return 100
-      if (props.type === 'textarea') return 500
+      if (props.type === 'name') return 64
+      if (props.type === 'textarea') return 255
       return undefined
     })
 

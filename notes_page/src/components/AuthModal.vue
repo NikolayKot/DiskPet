@@ -2,6 +2,7 @@
 import { defineComponent, ref } from 'vue'
 import { CloseIcon } from '@/assets/icons'
 import BaseInput from './BaseInput.vue'
+import { useAuthStore } from '@/stores/auth'
 
 export default defineComponent({
   name: 'AuthModal',
@@ -16,6 +17,7 @@ export default defineComponent({
   },
   emits: ['close'],
   setup(_, { emit }) {
+    const authStore = useAuthStore()
     const email = ref('')
     const password = ref('')
     const passwordConfirm = ref('')
@@ -24,6 +26,81 @@ export default defineComponent({
     const passwordError = ref('')
     const passwordConfirmError = ref('')
     const isLoginMode = ref(true)
+
+    const validateEmail = (email: string) => {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+      return emailRegex.test(email)
+    }
+
+    const validateForm = () => {
+      let isValid = true
+      emailError.value = ''
+      passwordError.value = ''
+      passwordConfirmError.value = ''
+
+      if (!email.value) {
+        emailError.value = 'E-Mail не может быть пустым'
+        isValid = false
+      } else if (!validateEmail(email.value)) {
+        emailError.value = 'Невалидный адрес электронной почты'
+        isValid = false
+      }
+
+      if (!password.value) {
+        passwordError.value = 'Пароль не может быть пустым'
+        isValid = false
+      } else if (password.value.length < 4) {
+        passwordError.value = 'Пароль не может быть короче 4 символов'
+        isValid = false
+      } else if (password.value.length > 12) {
+        passwordError.value = 'Пароль не может быть длинее 12 символов'
+        isValid = false
+      }
+
+      if (!isLoginMode.value) {
+        if (password.value !== passwordConfirm.value) {
+          passwordConfirmError.value = 'Пароли не совпадают'
+          isValid = false
+        }
+      }
+
+      return isValid
+    }
+
+    const handleSubmit = async () => {
+      if (!validateForm()) return
+
+      try {
+        if (isLoginMode.value) {
+          const response = await authStore.login(email.value, password.value)
+          if (response) {
+            await authStore.fetchUserData()
+            emit('close')
+          }
+        } else {
+          const response = await authStore.register(
+            email.value,
+            password.value,
+            passwordConfirm.value,
+          )
+          if (response) {
+            emit('close')
+          }
+        }
+      } catch (error: any) {
+        if (error.status === 409) {
+          emailError.value = 'Пользователь с таким e-mail уже зарегистрирован'
+        } else if (error.message) {
+          if (error.message.includes('email')) {
+            emailError.value = error.message
+          } else if (error.message.includes('password')) {
+            passwordError.value = error.message
+          } else {
+            console.error(error)
+          }
+        }
+      }
+    }
 
     const handleClose = () => {
       emit('close')
@@ -50,6 +127,7 @@ export default defineComponent({
       handleClose,
       handleOutsideClick,
       toggleMode,
+      handleSubmit,
       CloseIcon,
     }
   },
@@ -68,7 +146,7 @@ export default defineComponent({
           {{ isLoginMode ? 'Вход в ваш аккаунт' : 'Регистрация' }}
         </h2>
 
-        <form class="modal__form" @submit.prevent>
+        <form class="modal__form" @submit.prevent="handleSubmit">
           <BaseInput
             v-model="email"
             label="Email"
